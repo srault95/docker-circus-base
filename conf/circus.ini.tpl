@@ -17,7 +17,7 @@ endpoint = tcp://*:5555
 pubsub_endpoint = tcp://*:5556
 
 # FOR pub/sub Stats
-stats_endpoint = tcp://*:5557
+stats_endpoint = tcp://127.0.0.1:5557
 
 loglevel = INFO
 #logoutput = -
