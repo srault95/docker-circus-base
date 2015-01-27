@@ -2,7 +2,7 @@
 
 echo "--> start.sh script running..."
 
-run-parts -v  --report /etc/setup.d
+run-parts -v --report /etc/setup.d
 
 envtpl /etc/circus.ini.tpl  --allow-missing --keep-template
 

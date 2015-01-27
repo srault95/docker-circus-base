@@ -1,16 +1,27 @@
 [circus]
-stream_backend = gevent
-statsd = {{ CIRCUS_STATSD | default('False') }}
-httpd = {{ CIRCUS_HTTPD | default('False') }}
 
+check_delay = 5
+
+stream_backend = gevent
+
+statsd = {{ CIRCUS_STATSD | default('0') }}
+
+httpd = {{ CIRCUS_HTTPD | default('0') }}
 httpd_host = 0.0.0.0
 httpd_port = 8888
 
-endpoint = tcp://127.0.0.1:5555
-pubsub_endpoint = tcp://127.0.0.1:5556
-stats_endpoint = tcp://127.0.0.1:5557
+# Répond à circusctl et a l'admin web
+endpoint = tcp://*:5555
+
+# Reçoit les pub/sub Events
+pubsub_endpoint = tcp://*:5556
+
+# Reçoit les pub/sub Stats
+stats_endpoint = tcp://*:5557
 
 loglevel = INFO
-#logoutput = stdout
+#logoutput = -
+
+debug = {{ CIRCUS_DEBUG | default('0') }}
 
 include = /etc/circus.d/*.ini
